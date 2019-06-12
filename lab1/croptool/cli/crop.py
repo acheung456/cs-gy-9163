@@ -4,10 +4,12 @@ import os
 
 from PIL import Image
 
+
 @click.group()
 def cli():
     """Image Cropper"""
     pass
+
 
 @cli.command()
 @click.option(
@@ -20,12 +22,14 @@ def cli():
 )
 def square(source, destination):
     """Square Crop that image"""
-    src = Image.open(source)
+    try:
+        src = Image.open(source)
+    except AttributeError:
+        print("Unable to read source image data. Exiting.")
+        raise SystemExit
     cropped = src.resize((min(src.size), min(src.size)))
     destination = destination or source
     try:
         cropped.save(destination)
     except IOError:
         print("Unable to save", cropped)
-
-    
