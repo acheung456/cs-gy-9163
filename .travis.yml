@@ -1,0 +1,8 @@
+language: python
+
+python:
+  - "3.6"
+
+script:
+  - cd ./lab1/croptool
+  - python -m unittest 
