@@ -21,7 +21,7 @@ def cli():
 def square(source, destination):
     """Square Crop that image"""
     src = Image.open(source)
-    cropped = src.resize((min(src.size), min(src.size)))
+    cropped = src.crop((0, 0, min(src.size), min(src.size)))
     destination = destination or source
     try:
         cropped.save(destination)
