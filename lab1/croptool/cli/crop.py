@@ -19,7 +19,7 @@ def cli():
 )
 @click.option(
     "-d", "--destination",
-    type=click.Path(exists=True, readable=True)
+    type=click.Path(writable=True)
 )
 def square(source, destination):
     """Square Crop that image"""
@@ -33,4 +33,4 @@ def square(source, destination):
     try:
         cropped.save(destination)
     except IOError:
-        print("Unable to save", cropped)
+        print(f"Unable to save image at {destination}")
