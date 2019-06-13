@@ -25,8 +25,8 @@ def square(source, destination):
     """Square Crop that image"""
     try:
         src = Image.open(source)
-    except AttributeError:
-        print("Unable to read source image data. Exiting.")
+    except Exception:
+        print(f"Unable to read source image data. Does {source} exist? Is it readable?")
         raise SystemExit
     cropped = src.resize((min(src.size), min(src.size)))
     destination = destination or source
