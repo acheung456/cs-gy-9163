@@ -14,6 +14,7 @@ def cli():
 @cli.command()
 @click.option(
     "-s", "--source",
+    required=True,
     type=click.Path(exists=True, readable=True)
 )
 @click.option(
@@ -27,7 +28,7 @@ def square(source, destination):
     except AttributeError:
         print("Unable to read source image data. Exiting.")
         raise SystemExit
-    cropped = src.resize((min(src.size), min(src.size)))
+    cropped = src.crop((min(src.size), min(src.size)))
     destination = destination or source
     try:
         cropped.save(destination)
