@@ -16,12 +16,18 @@ def cli():
 )
 @click.option(
     "-d", "--destination",
-    type=click.Path(exists=True, readable=True)
+    type=click.Path(exists=False)
 )
 def square(source, destination):
     """Square Crop that image"""
     src = Image.open(source)
-    cropped = src.crop((0, 0, min(src.size), min(src.size)))
+    box = (
+            0 if min(src.size) == src.size[0] else (src.size[0]-min(src.size))/2,
+            0 if min(src.size) == src.size[1] else (src.size[1]-min(src.size))/2,  
+            min(src.size) if min(src.size) == src.size[0] else src.size[0] - ((src.size[0]-min(src.size))/2),
+            min(src.size) if min(src.size) == src.size[1] else src.size[1] - ((src.size[1]-min(src.size))/2)
+        )
+    cropped = src.crop(box)
     destination = destination or source
     try:
         cropped.save(destination)
