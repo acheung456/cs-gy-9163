@@ -23,7 +23,7 @@ def square(source, destination):
     src = Image.open(source)
     box = (
             0 if min(src.size) == src.size[0] else (src.size[0]-min(src.size))/2,
-            0 if min(src.size) == src.size[1] else (src.size[1]-min(src.size))/2,  
+            0 if min(src.size) == src.size[1] else (src.size[1]-min(src.size))/2,
             min(src.size) if min(src.size) == src.size[0] else src.size[0] - ((src.size[0]-min(src.size))/2),
             min(src.size) if min(src.size) == src.size[1] else src.size[1] - ((src.size[1]-min(src.size))/2)
         )
