@@ -45,3 +45,4 @@ def square(source, destination):
         cropped.save(destination)
     except Exception:
         print(f"Unable to save image at {destination}")
+        raise

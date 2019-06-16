@@ -7,18 +7,23 @@ from PIL import Image
 
 
 class TestCrop(unittest.TestCase):
-    def test_crop(self):
+    def test_crop_with_explicit_destination(self):
         runner = CliRunner()
         raw_image = os.path.join(os.path.dirname(__file__), "../resources/longcrop.png")
         out_image = '/tmp/test_output.png'
         result = runner.invoke(crop.cli, ['square', '-s', raw_image, '-d', out_image])
         image = Image.open(raw_image)
-        print(result.stdout)
         new_image = Image.open(out_image)
-        print(new_image.size)
         x, y = new_image.size[0], new_image.size[1]
         self.assertEqual(min(image.size), x)
         self.assertEqual(min(image.size), y)
+
+    def test_cant_save_new_image(self):
+        runner = CliRunner()
+        raw_image = os.path.join(os.path.dirname(__file__), "../resources/longcrop.png")
+        out_image = '/does/not/exist.png'
+        with self.assertRaises(Exception):
+            runner.invoke(crop.cli, ['square', '-s', raw_image, '-d', out_image], catch_exceptions=False)
 
 
 if __name__ == '__main__':
