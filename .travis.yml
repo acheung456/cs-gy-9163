@@ -4,13 +4,10 @@ python:
   - "3.6"
   
 install:
-  - pip install pytest
-  - pip install pytest-cov
-  - pip install coveralls
+  - pip install -r requirements.txt
 
 script:
-  - cd ./lab1/croptool
-  - python -m unittest 
+  - pytest --cov=lab1/croptool/
   
 after_success:
   - coveralls
