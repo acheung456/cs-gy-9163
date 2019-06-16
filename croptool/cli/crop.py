@@ -17,20 +17,25 @@ def cli():
 @click.option(
     "-s", "--source",
     required=True,
-    type=click.Path(exists=True, readable=True)
+    type=click.Path(exists=True, readable=True),
+    help='Source file path'
 )
 @click.option(
     "-d", "--destination",
-    type=click.Path(writable=True)
+    type=click.Path(writable=True),
+    help='Destination file path'
 )
 def square(source, destination):
-    """Square Crop that image"""
-    try:
-        src = Image.open(source)
-    except Exception:
-        print(f"Unable to read source image data. Does {source} exist? Is it readable?")
-        raise SystemExit
-    print(src.size)
+    """Square crops an image (crops center of image).
+
+    Cropped center image will be transposed up and left
+    for half pixel cases.
+
+    :param string source: Source file path
+    :param string destination: Destination file path
+    """
+    
+    src = Image.open(source)
     box = (
             0 if min(src.size) == src.size[0] else (src.size[0]-min(src.size))/2,
             0 if min(src.size) == src.size[1] else (src.size[1]-min(src.size))/2,
@@ -38,7 +43,6 @@ def square(source, destination):
             min(src.size) if min(src.size) == src.size[1] else src.size[1] - ((src.size[1]-min(src.size))/2)
         )
     box = (math.floor(x) for x in box)
-    print(box)
     cropped = src.crop(box)
     destination = destination or source
     try:
