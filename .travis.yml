@@ -9,8 +9,7 @@ install:
   - pip install coveralls
 
 script:
-  - cd ./lab1/croptool
-  - python -m unittest 
+  - pytest --cov=lab1/croptool/
   
 after_success:
   - coveralls
