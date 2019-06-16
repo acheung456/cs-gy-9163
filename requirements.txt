@@ -1,4 +1,5 @@
 Click==7.0
 click-log==0.3.2
--e git+https://github.com/acheung456/cs-gy-9163.git@53ae7551782ced382622d9efc809d613dc7304c9#egg=crop&subdirectory=lab1
 Pillow==6.0.0
+-e git+https://github.com/acheung456/cs-gy-9163.git@53ae7551782ced382622d9efc809d613dc7304c9#egg=crop&subdirectory=lab1
+
