@@ -24,7 +24,3 @@ class TestCrop(unittest.TestCase):
         out_image = '/does/not/exist.png'
         with self.assertRaises(Exception):
             runner.invoke(crop.cli, ['square', '-s', raw_image, '-d', out_image], catch_exceptions=False)
-
-
-if __name__ == '__main__':
-    unittest.main()
