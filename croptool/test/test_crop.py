@@ -11,7 +11,7 @@ class TestCrop(unittest.TestCase):
         runner = CliRunner()
         raw_image = os.path.join(os.path.dirname(__file__), "../resources/longcrop.png")
         out_image = '/tmp/test_output.png'
-        result = runner.invoke(crop.cli, ['square', '-s', raw_image, '-d', out_image])
+        runner.invoke(crop.cli, ['square', '-s', raw_image, '-d', out_image])
         image = Image.open(raw_image)
         new_image = Image.open(out_image)
         x, y = new_image.size[0], new_image.size[1]
