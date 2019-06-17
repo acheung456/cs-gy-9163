@@ -1,7 +1,4 @@
 import click
-import click_log
-import os
-import time
 import croptool.crop as crop
 
 @click.group()
