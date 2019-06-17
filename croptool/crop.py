@@ -8,7 +8,7 @@ def square(source, destination):
     src = PIL.Image.open(source)
     image_box = ImageBox(src.size)
     image_box.center_crop()
-    if not all(isinstance(x, int) for x in image_box.box):
+    if not all(x % 1 == 0 for x in image_box.box):
         image_box.transpose()
     cropped = src.crop(image_box.box)
     destination = destination or source
@@ -16,6 +16,7 @@ def square(source, destination):
         cropped.save(destination)
     except Exception:
         print(f"Unable to save image at {destination}")
+        raise
 
 class Directions(Enum):
     UP = "up"
@@ -39,7 +40,6 @@ class ImageBox():
         )
 
     def transpose(self, direction=Directions.UP):
-        if not Directions.has_direction(direction):
-            raise "Unknown Direction Exception"
+        direction = direction or Directions(direction)
         if direction is Directions.UP:
             self.box = (math.floor(x) for x in self.box)
