@@ -4,7 +4,7 @@ setup(
     name="crop",
     version="1.0",
     description="Crops images",
-    packages=["croptool.cli"],
+    packages=["croptool"],
     install_requires=[
         "Click",
         "click-log",
