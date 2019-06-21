@@ -9,9 +9,9 @@ This is the project repo for lab 1a. Build and code coverage can be found in abo
 **Partners:** awc317 / de846
 
 # Installation
-To install, run `pip install` from the project root:
+To install croptool into whichever your active Python environment is, you can run `pip install` the following command:
 
-`pip install -e ${checkout}/`
+`pip install git+https://github.com/acheung456/cs-gy-9163-lab1a.git`
 
 # Usage
 Write new image, keeping original:
