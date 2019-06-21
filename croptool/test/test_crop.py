@@ -38,8 +38,8 @@ class TestCrop(unittest.TestCase):
 
     def test_valid_direction(self):
         from croptool.crop import Directions
-        self.assertEquals("up", Directions("up").value)
+        self.assertEqual("up", Directions("up").value)
 
     def test_invalid_direction(self):
         from croptool.crop import Directions
-        self.assertEquals(False, Directions.has_direction("foobar"))
+        self.assertEqual(False, Directions.has_direction("foobar"))
