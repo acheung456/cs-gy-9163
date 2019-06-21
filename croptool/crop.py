@@ -1,11 +1,11 @@
 import math
-import PIL
+from PIL import Image
 
 from enum import Enum
 
 def square(source, destination):
     """Square crops an image (crops center of image)"""
-    src = PIL.Image.open(source)
+    src = Image.open(source)
     image_box = ImageBox(src.size)
     image_box.center_crop()
     if not all(x % 1 == 0 for x in image_box.box):
