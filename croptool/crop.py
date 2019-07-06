@@ -23,7 +23,7 @@ class Directions(Enum):
     DOWN = "down"
 
     @classmethod
-    def has_direction(self, val):
+    def has_direction(cls, val):
         return any(val == item.value for item in self)
 
 class ImageBox():
